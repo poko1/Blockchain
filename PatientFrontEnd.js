@@ -41,52 +41,15 @@ class App extends Component {
   };
 
   getHash = async () => {
-    //const { contract, ipfsHash } = this.state;
-    //const web3 = await getWeb3();
-    // Stores a given value, 5 by default.
-    //await contract.methods.set(web3.utils.utf8ToHex("5")).send({ from: accounts[0] });
-    // Get the value from the contract to prove it worked.
-    //const response = await contract.methods.get().call();
-    // Update state with the result.
-    //this.setState({ ipfsHash: response });
-    //console.log('ipfsHash: ',ipfsHash);
-    global.m="042ce547f57e49d1ee4914261e97e43c5c97d56083e3c5a57d99f8629ee6f2ea";
-    global.i="35bdc31d86ea58c546afa8829dbc93b5";
-    global.c="1cacdbe9e87500a906fa143c0b0001780f1ba217ac788d867d5b7faf6f5d120106d7633de45bb56112ca22bdc04d274a"; 
-    global.e="04315ef41cbb07346ee0709b75ac1fd4a07ef7554c112d8f4caae43decf05d90daccdfaba2c96238821fd56556e82f0f27eea2e33250d70ba605e1a7dc96777749";
+    const { accounts, contract, ipfsHash } = this.state;
+    global.c = await contract.methods.get().call();
+    this.setState({ ipfsHash: response });
     console.log('ipfsHash encrypted :',global.c);
   };
 
 
-  /*captureFile= async (event) =>{
-    console.log('capture file...')
-     event.preventDefault()
-     const file = event.target.files[0]
-     const reader= new window.FileReader()
-     reader.readAsArrayBuffer(file)
-     reader.onloadend = () => {
-      this.setState({buffer:Buffer(reader.result)})
-      console.log('buffer',this.state.buffer)
-     }
-  }*/
-
- /* onSubmit= async (event) =>{
-    event.preventDefault()
-    ipfs.files.add(this.state.buffer,(error,result) =>{
-      console.log(error,result)
-      if(error){
-        console.error(error)
-        return
-      }
-      
-global.r=result[0].hash
-console.log('ipfsHash: ',global.r);
-    })
-  }*/
-
   getImage= async(event)=>{
   const { accounts, contract, ipfsHash } = this.state;
-  //contract.methods.set(global.d).send({from:accounts[0]})
   this.setState({ipfsHash: global.d})
   console.log('ipfsHash', global.d)
   }
@@ -97,10 +60,7 @@ const decrypted = await EthCrypto.decryptWithPrivateKey(
         //prKey, // privateKey
          global.prK,
         {
-            iv: global.i,
-            ephemPublicKey: global.e,
             ciphertext: global.c,
-            mac: global.m
         } // encrypted-data
     );
 
