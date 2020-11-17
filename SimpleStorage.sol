@@ -17,45 +17,5 @@ contract SimpleStorage {
     {
          return ipfsHash;   
     }
-    
-    
-	// sets corresponding iv generated
-    function seti (string memory hash)
-        public
-    {
-           i= hash;
-    }
-    
-    // gets corresponding iv generated
-    function geti() public view returns (string memory)
-    {
-         return i;   
-    }
-	
-	// sets corresponding mac generated
-    function setm (string memory hash)
-        public
-    {
-           m= hash;
-    }
-	
-	// gets corresponding mac generated
-    function getm() public view returns (string memory)
-    {
-         return m;   
-    }
-    
-	// sets corresponding ephimericpublickey generated
-    function sete (string memory hash)
-        public
-    {
-           e= hash;
-    }
-	
-	// gets corresponding ephimericpublickey generated
-    function gete() public view returns (string memory)
-    {
-         return e;   
-    }
         
 }
